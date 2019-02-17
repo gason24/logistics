@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.huayue.logistics.mapper.OrderRxpressMapper" >
+  <resultMap id="BaseResultMap" type="edu.huayue.logistics.entity.pojo.OrderRxpress" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="erp_order_id" property="erpOrderId" jdbcType="BIGINT" />
+    <result column="express_kind_id" property="expressKindId" jdbcType="INTEGER" />
+    <result column="exp_num" property="expNum" jdbcType="VARCHAR" />
+    <result column="unshipped_grades" property="unshippedGrades" jdbcType="VARCHAR" />
+    <result column="exp_count" property="expCount" jdbcType="INTEGER" />
+    <result column="logistics_state" property="logisticsState" jdbcType="INTEGER" />
+    <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="signing_time" property="signingTime" jdbcType="TIMESTAMP" />
+    <result column="estimated_arrive_time" property="estimatedArriveTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="agency_name" property="agencyName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, erp_order_id, express_kind_id, exp_num, unshipped_grades, exp_count, logistics_state, 
+    send_time, signing_time, estimated_arrive_time, create_time, agency_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.huayue.logistics.entity.pojo.OrderRxpressExample" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_express
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="edu.huayue.logistics.entity.pojo.OrderRxpressExample" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from order_express
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="edu.huayue.logistics.entity.pojo.OrderRxpressExample" resultType="java.lang.Integer" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from order_express
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update order_express
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.erpOrderId != null" >
+        erp_order_id = #{record.erpOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.expressKindId != null" >
+        express_kind_id = #{record.expressKindId,jdbcType=INTEGER},
+      </if>
+      <if test="record.expNum != null" >
+        exp_num = #{record.expNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unshippedGrades != null" >
+        unshipped_grades = #{record.unshippedGrades,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expCount != null" >
+        exp_count = #{record.expCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsState != null" >
+        logistics_state = #{record.logisticsState,jdbcType=INTEGER},
+      </if>
+      <if test="record.sendTime != null" >
+        send_time = #{record.sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.signingTime != null" >
+        signing_time = #{record.signingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.estimatedArriveTime != null" >
+        estimated_arrive_time = #{record.estimatedArriveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.agencyName != null" >
+        agency_name = #{record.agencyName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update order_express
+    set id = #{record.id,jdbcType=BIGINT},
+      erp_order_id = #{record.erpOrderId,jdbcType=BIGINT},
+      express_kind_id = #{record.expressKindId,jdbcType=INTEGER},
+      exp_num = #{record.expNum,jdbcType=VARCHAR},
+      unshipped_grades = #{record.unshippedGrades,jdbcType=VARCHAR},
+      exp_count = #{record.expCount,jdbcType=INTEGER},
+      logistics_state = #{record.logisticsState,jdbcType=INTEGER},
+      send_time = #{record.sendTime,jdbcType=TIMESTAMP},
+      signing_time = #{record.signingTime,jdbcType=TIMESTAMP},
+      estimated_arrive_time = #{record.estimatedArriveTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      agency_name = #{record.agencyName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
